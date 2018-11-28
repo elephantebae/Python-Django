@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'poorly_coded_store/css/bootstrap.css' %}"> 
+
+    <title>Amadon</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h3>Thank you for your business!</h3>
+        </div>
+        <div class="row">
+            <p>We charged your credit card for {{request.session.allpurchases}}</p>
+        </div>
+        <div class="row">
+            <p>You have ordered {{request.session.quantity}} items so far and spent {{request.session.allpurchases}} with Amadon.com!</p>
+        </div>
+        <div class="row">
+            <p><a href="/">Go Back</a></p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class ="container">
+            <form action ="/result" method="Post">
+                <p>Your Name: <input type="text" name= "yourname"></p>
+                <p>Dojo Location: <input type="text" name="dojolocation"></p>
+                <p>Favorite Location: <input type="text" name="favlocation"></p>
+                <p>Comment (optional): <input class id="bigcomment" name="comment"></p>
+                <input type="submit" value ="button">
+            </form>
+        </div>
+    </body>
+</html>

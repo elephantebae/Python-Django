@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class= "container" style="margin: 5px; background-color:red;">
+                        <p>{{message}}</p>
+                    </div>
+                {% endfor %}   
+            {% endif %}
+        {% endwith %}
+        <form action='/process' name ="email" method="post">
+            <div class="row" style="margin-top: 30px;">
+                <div class= "col-md-3"></div>
+                <div class= "col-md-3-offset-3">
+                    <p>Email Address: </p>
+                </div>
+                <div class="col-md-4">
+                    <input class ="input-lg" type="text" name="email">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-2">
+                    <button class= "btn-default" type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>

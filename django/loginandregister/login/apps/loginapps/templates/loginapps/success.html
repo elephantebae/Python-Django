@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'loginapps/css/bootstrap.css' %}"> 
+    </head>
+    <body>
+        <div class="container">
+            <h1>Success! Welcome, {{user.first_name}} {{user.last_name}}!</h1>
+            <p>Successfully registered (or logged in)!</p>
+
+        </div>
+    </body>
+</html>

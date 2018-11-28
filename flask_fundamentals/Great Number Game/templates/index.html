@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="Great Number Game" content="GNG">
+        <title>Great Number Game</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/design.css') }}">
+    </head>
+    <body>
+        <h2>Welcome to the Great Number Game</h2>
+        <p> I am thinking of a number between 1 and 100</p>
+        <p> Take a guess!</p>
+        {% if player1answer == 0: %}
+            <div id="emptybox"></div>
+        {% elif player1answer < answer: %}
+            <div id="box">
+                <p>Too Low!</p>
+            </div>
+        {% endif %}
+        {% if player1answer > answer: %}
+            <div id="box">
+                <p>Too High!</p>
+            </div>
+        {% endif %}
+        {% if player1answer == answer: %}
+            <div id="box" style="background-color: Green">
+                <p>{{answer}} was the number!</p>
+            </div>
+        {% endif %}
+
+        <form class="center" action='/results' method='post'>
+            <input type="int" name="guessnumber" placeholder="" value="">
+            <button type="submit">Submit</button>
+        </form>
+        <p>{{answer}}</p>   
+    </body>
+</html>

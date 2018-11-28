@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        {% load static %}
+            <link rel="stylesheet" href="{% static 'semiapps/css/bootstrap.css' %}"> 
+    </head>
+    <div class="container">
+        <body>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 class= text-center>Tv Show {{tvshow.id }}</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Title: {{ tvshow.title }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Network: {{ tvshow.network }}</p>
+                    </div>    
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Release Date: {{ tvshow.release_date }} </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Description: {{ tvshow.desc }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Last updated: {{ tvshow.updated_at }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">
+                        <a href="/shows/{{tvshow.id}}/edit">Edit</a>
+                    </div>
+                    <div class="col-md-1-offset-1">
+                        <p> | </p>
+                    </div>
+                    <div class="col-md-2-offset-1">
+                        <a href="/shows/{{tvshow.id}}/destroy">Delete</a>
+                    </div>
+                </div>
+        
+    
+            </body>
+        </div>
+
+</html>

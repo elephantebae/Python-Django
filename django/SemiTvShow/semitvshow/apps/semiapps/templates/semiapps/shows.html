@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title>Show table</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'semiapps/css/bootstrap.css' %}">  
+    </head>
+    <body>
+        <div class="container">
+            <h1>All Shows</h1>
+            <table class="table table-bordered table-condesnsed table-responsive">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Network</th>
+                    <th>Release Date</th>
+                    <th>Actions</th>
+                </tr>
+                {% for show in all_shows %}
+                <tr>
+                    <td>{{show.id}}</td>
+                    <td>{{show.title}}</td>
+                    <td>{{show.network}}</td>
+                    <td>{{show.release_date}}</td>
+                    <td><a href="/shows/{{show.id}}">Show</a> | <a href="/shows/{{show.id}}/edit">Edit</a> |  <a href="/shows/{{show.id}}/delete">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+            <a href="/shows/new">Add new show</a>
+
+        </div>
+
+    </body>
+</html>

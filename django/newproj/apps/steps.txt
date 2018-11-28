@@ -1,0 +1,12 @@
+user.objects.create(first_name="paul", last_name="bae", email_address="paul@mail.com", age="25")
+user.objects.create(first_name="rob", last_name="dyrdek", email_address="rob@mail.com", age="31")
+user.objects.create(first_name="hello", last_name="work", email_address="work@mail.com", age="1")
+user.objects.all()
+user.objects.last()
+user.objects.first()
+change = user.objects.get(id=3)
+change.last_name= "Pancakes"
+change.save()
+dthis = user.objects.get(id=2)
+dthis.delete()
+user.objects.all().order_by()

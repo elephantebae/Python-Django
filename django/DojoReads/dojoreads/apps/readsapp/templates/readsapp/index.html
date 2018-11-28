@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>login page</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <h1>Welcome!</h1>
+                </div>
+            </div>
+            <div class="row">
+                <form action="/register" method="POST">
+                    {% csrf_token %}
+                    <div class="col-md-5">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span>Name: </span>
+                            </div>
+                            <div class="col-md-1-offset-1">
+                                <input type="text" class="input-lg" name="name">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span>Alias: </span>
+                            </div>
+                            <div class="col-md-1-offset-1">
+                                <input type="text" class="input-lg" name="alias">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span>Email: </span>
+                            </div>
+                            <div class="col-md-1-offset-1">
+                                <input type="text" class="input-lg" name="email">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span>Password: </span>
+                            </div>
+                            <div class="col-md-1-offset-1">
+                                <input class="input-lg" type="password" name="password"> 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span>Confirm Pw: </span>
+                            </div>
+                            <div class="col-md-1-offset-1">
+                                <input class="input-lg" type="password" name="cpw">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="text-center">
+                                <input class="btn-primary" type="submit" value="Register">
+                            </div>
+                        </div>
+                    </div>
+                </form> 
+                <form action="/login" method="POST">
+                    {% csrf_token %}
+                    <div class="col-md-5">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span>Email: </span>
+                            </div>
+                            <div class="col-md-1">
+                                <input type="text" name="lmail" class="input-lg">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span>Password: </span>
+                            </div>
+                            <div class="col-md-1">
+                                <input type="password" name="lpass" class="input-lg">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="text-center">
+                                <input class="btn-primary" type="submit" value="Login">
+                            </div>
+                        </div>
+                    </div>
+                
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="description" content="">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class= container>
+            <table>
+                <th id="underline">Submitted Info</th>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>Name: </td>
+                    <td>{{name}}</td>
+                </tr>
+                <tr>
+                    <td>Dojo Location:</td>
+                    <td>{{dojo}}</td>
+                </tr>
+                <tr>
+                    <td>Favorite Language:</td>
+                    <td>{{fav}}</td>
+                </tr>
+                <tr>
+                    <td>Comment:</td>
+                    <td>{{com}}</td>
+                </tr>
+            </table>
+
+        </div>
+    </body>
+</html>

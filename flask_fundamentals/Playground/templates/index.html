@@ -1,0 +1,40 @@
+<!Doctype = HTML>
+<html lang = "en">
+    <title> Playground</title>
+    <style>
+        body {
+            display: block;
+            width: 970px;
+            height: 1000px;
+            background-color: white;
+        }
+        body h1 {
+            color: black;
+            text-align: center;
+        }
+        .box{
+            display:inline-block;
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            margin: 10px 10px
+        }
+        #move{
+            text-align:center;
+            margin-left: auto;
+            margin-right: auto
+        }
+
+    </style>
+
+<body>
+    <h1> Welcome!</h1>
+    <div id= "move"> 
+        {% for i in range(num): %}
+            
+            <div class = "box" style ="background-color: {{color}}"></div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>

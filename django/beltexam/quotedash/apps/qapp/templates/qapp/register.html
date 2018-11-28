@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>login/registration</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+    </head>
+    <body>
+
+        <div class="container">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <h1>Register</h1>
+                        </div>
+                    </div>
+                    <form action="/register" method="POST">
+                        {% csrf_token %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if message.extra_tags == 'fname' %}
+                        <p class = "error">{{message}}</p>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        <div class="row">
+                            <div class="col-md-2">
+                                <p>First Name:</p>
+                            </div>
+                            <div class="col-md-1">
+                                <input class="input-lg" type="text" name="fname">          
+                            </div>
+                        </div>
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if message.extra_tags == 'lname' %}
+                        <p class = "error">{{message}}</p>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        <div class="row">
+                            <div class="col-md-2">
+                                <p>Last Name:</p>
+                            </div>
+                            <div class="col-md-1">
+                                <input class="input-lg" type="text" name="lname">
+                            </div>
+                        </div>
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if message.extra_tags == 'email' %}
+                        <p class = "error">{{message}}</p>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        <div class="row">
+                            <div class="col-md-2">
+                                <p>Email: </p>
+                            </div>
+                            <div class="col-md-1">
+                                <input class="input-lg" type="text" name="email">
+                            </div>
+                        </div>
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if message.extra_tags == 'password' %}
+                        <p class = "error">{{message}}</p>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        <div class="row">
+                            <div class="col-md-2">
+                                <p>Password:</p>
+                            </div>
+                            <div class="col-md-1">
+                                <input class="input-lg" type="password" name="pw">
+                            </div>
+                        </div>
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if message.extra_tags == 'password' %}
+                        <p class = "error">{{message}}</p>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        <div class="row">
+                            <div class="col-md-2">
+                                <p>Confirm pw:</p>
+                            </div>
+                            <div class="col-md-1">
+                                <input class="input-lg" type="password" name="cpw">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <input class="btn-primary" type="submit" value="Register">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form action="/login" method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-2">
+                                <h1>Login</h1>
+                            </div>
+                        </div>
+                        
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if message.extra_tags == 'lemail' %}
+                        <p class = "error">{{message}}</p>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        <div class="row">
+                            <div class="col-md-2">
+                                <p>Email: </p>
+                            </div>
+                            <div class="col-md-1">
+                                <input class="input-lg" type="text" name="lemail">
+                            </div>
+                        </div>
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if message.extra_tags == 'lpassword' %}
+                        <p class = "error">{{message}}</p>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        <div class="row">
+                            <div class="col-md-2">
+                                <p>Password: </p>
+                            </div>
+                            <div class="col-md-1">
+                                <input class="input-lg" type="password" name="lpassword">
+                            </div>
+                        </div>    
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <input class="btn-primary" type="submit" value="Login">
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+    </body>
+</html>

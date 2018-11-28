@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <p class="navbar-brand">CodingDojo Wall</p>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><span class="glyphicon glyphicon-user"></span> Welcome, {{user.first_name}}</a></li>
+                    <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <form action="/msgprocess" method="POST">
+                {% csrf_token %}
+                <span>Post a message</span>
+                <textarea  class="form-control" rows="5" id="message" name="mtext"></textarea>
+                <div class="text-right">
+                    <button type="submit" class="form-group btn btn-success">Post a message</button>
+                </div>
+            </form>
+            <div class="panel panel-default">
+                <div class="panel-heading">All Messages</div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                    {% for x in new_message %}
+                        {{x.users_who_message.first_name}} {{x.users_who_message.last_name}} - Sent a message at {{x.created_at}}
+                        <li class="list-group-item">{{x.message}}</li>
+                        <ul class="list-group">
+                            {% for comment in x.msg_comments.all %}
+                            <li class="list-group-item">
+                                <span>
+                                    {{comment.users_who_comments.first_name}} {{comment.users_who_comments.last_name}} - Posted a comment at {{comment.created_at}}
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                <p>{{comment.comment}} </p>
+                            </li>
+                            {% endfor %}
+                            <form action="/comments/{{x.id}}" method="POST">
+                                {% csrf_token %}
+                                <li class="list-group-item">
+                                    <div class="panel-heading">Post a comment</div>
+                                </li>
+                                <li class="list-group-item">
+                                    <textarea class="form-control" rows="3" id="comment" name="ctext"></textarea>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="text-right">
+                                        <button type="submit" class="form-group btn btn-success">Post a comment</button>
+                                    </div>
+                                </li>
+                            </form>
+                        </ul>
+                        
+                    {% endfor %}
+                    
+                </ul>
+                </div>
+            </div>
+            
+        </div>
+    </body>
+</html>

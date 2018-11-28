@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Ninja Gold</title>
+        <meta name="description" content="Ninja Gold">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/css/bootstrap.css') }}">
+    </head>
+    <body>
+        
+            <div class ="containers">
+                <div class="row">        
+                    <div class="col-md-1">
+                        <label for="goldcount" style= display:inline-block;> Your Gold:</label>
+                    </div>    
+                    <div class="col-md-2 col-0-offset-5"    
+                        <div class="panel panel-default" style= display:inline-block>
+                            <div class="panel-body border">
+                                {{gold}}
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        
+        <div class="container">
+            <div class="row">
+                    <form action='/process_money' name='farm' method='POST'>
+                        <div class="col" style="border  :2px solid black;">
+                            <h1 class= "text-center">Farm</h1>
+                            <p class= "text-center">(earns 10-20 golds)</p>
+                            <div class="panel"></div>
+                            <div class="text-center">
+                                <input type ="hidden" name = "building" value="farm"/>
+                                <input class="btn-default" type="submit" value="Find Gold!"/>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="col-md-1"></div>
+                    <form action='/process_money' name='cave' method='POST'>
+                        <div class="col" style="border  :2px solid black;">
+                            <h1 class="text-center">Cave</h1>
+                            <p class="text-center">(earns 5-10 golds)</p>
+                            <div class="text-center">
+                                <input type ="hidden" name= "building" value="cave"/>
+                                <input class="btn-default" type="submit" value="Find Gold!"/>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="col-md-1"></div>
+                    <form action='/process_money' name='house' method="POST">
+                        <div class="col" style="border  :2px solid black;">
+                            <h1 class="text-center">House</h1>
+                            <p class="text-center">(earns 2-5 golds)</p>
+                            <div class="text-center">
+                                <input type ="hidden" name="building" value="house"/>
+                                <input class="btn-default" type="submit" value="Find Gold!">
+                            </div>
+                        </div>
+                    </form>
+                    <div class="col-md-1"></div>
+                    <form action='/process_money' name= 'casino' method="POST">
+                        <div class="col" style="border  :2px solid black;">
+                            <h1 class="text-center">Casino</h1>
+                            <p class="text-center">(earns/takes 0-50 gold)</p>
+                            <div class="text-center">
+                                <input type="hidden" name="building" value="casino"/>
+                                <input class="btn-default" type="submit" value="Find Gold!">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </form>
+
+        
+    </body>
+</html>

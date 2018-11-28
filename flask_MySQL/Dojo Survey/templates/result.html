@@ -1,0 +1,50 @@
+<!Doctype = HTML>
+<html lang = "en">
+<head>
+    <title>html tables</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+            {% if messages %}                            <!-- check if there are any messages -->
+                {% for message in messages %}            <!-- loop through the messages -->
+                    <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% for x in usersinfo %}
+        <h1>Submitted Info</h1>
+        <div class="row">
+            <p class= "col-md-2">Name</p>
+            <p class= "col-md-2">{{x['name']}}</p>
+        </div>
+        <div class="row">
+            <p class= "col-md-2">Dojo Location:</p>
+            <p class= "col-md-2">{{x['location']}}</p>
+        </div>
+        <div class="row">
+            <p class="col-md-2">Favorite Language: </p>
+            <p class="col-md-2">{{x['favlang']}}</p>
+        </div>
+        <div class="row">
+            <p class="col-md-2">Comment:</p>
+            <p class="col-md-2">{{x['comment']}}</p>
+        </div>
+        {% endfor %}
+        <form action="/">
+            <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2">
+                        <button class="btn-default" type="submit"> Go back </button>
+                    </div>
+                </div>
+        
+        </form>
+
+    </div>
+
+
+
+</body>
+</html>

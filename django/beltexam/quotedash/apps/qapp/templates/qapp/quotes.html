@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <p class="navbar-brand">Welcome, {{user.first_name}} {{user.last_name}}</p>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/user/{{user.id}}"><span class="glyphicon glyphicon-user"></span> Edit My Account </a></li>
+                    <li><a href="/logout"><span class="glyphicon glyphicon-log-in"> </span>  Logout</a></li>
+                    
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <div class ="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Quotes</h2>
+                        </div>
+                        {% for quote in quotes %}
+                            
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                            <p>{{quote.author}}: "{{quote.quote}}"</p>
+                            <footer class="blockquote-footer">Posted by <a href="/showuser/{{quote.users_who_quote.id}}">{{quote.users_who_quote.first_name}} {{quote.users_who_quote.last_name}}</a></footer>
+                            
+                            {% for like in quote.likedquotes.all %}
+                                <span> 
+                                    {{like.user_who_likes.id}}
+                            {% endfor %}
+                                    people like this!
+                                </span>
+                                <div class="row">
+                                    <a href="/liked/{{quote.id}}">like</a>
+                                </div>
+                            
+                            {% if quote.users_who_quote.id == user.id %}
+                                <a href="/deletequote/{{quote.id}}">Delete</a>
+                            {% endif %}
+
+                            </blockquote>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <h2>Add a Quote!</h2>
+                    <form action="/addquote" method="POST">
+                        {% csrf_token %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if message.extra_tags == 'author' %}
+                        <p class = "error">{{message}}</p>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span> Author</span>
+                            </div>
+                            <div class="col-md-1">
+                                <input class="input-sm" type="text" name="author">
+                            </div>
+                        </div>
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if message.extra_tags == 'quote' %}
+                        <p class = "error">{{message}}</p>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span> Quote</span>
+                            </div>
+                            <div class="col-md-5">
+                                <textarea class="form-control" rows="5" name="quote"></textarea> 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="text-center">
+                                <input class="btn-primary" type="submit" value="Submit">
+                            </div> 
+                        </div>
+                    
+                    
+                    </form>
+            
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </body>
+</html>

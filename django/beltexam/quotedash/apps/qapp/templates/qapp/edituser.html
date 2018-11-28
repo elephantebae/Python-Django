@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                        <p class="navbar-brand">Edit My Account</p>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/quotes"> Go Back </a></li>
+                    <li><a href="/logout"><span class="glyphicon glyphicon-log-in"> </span>  Logout</a></li>
+                    
+                </ul>
+            </div>
+        </nav>
+        <div class = "container">
+            <form action="/editprocess/{{user.id}}" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    {% csrf_token %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    {% if message.extra_tags == 'fnedit' %}
+                    <p class = "error">{{message}}</p>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                    <div class="col-md-2">
+                        <span>First Name</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input class="input-lg" name="fnedit" type="text" value= {{user.first_name}}>
+                    </div>
+                </div>
+                {% csrf_token %}
+                {% if messages %}
+                {% for message in messages %}
+                {% if message.extra_tags == 'lnedit' %}
+                <p class = "error">{{message}}</p>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                <div class="row">
+                    <div class="col-md-2">
+                        <span>Last Name</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input class="input-lg" name="lnedit" type="text" value= {{user.last_name}}>
+                    </div>
+                </div>
+                {% csrf_token %}
+                {% if messages %}
+                {% for message in messages %}
+                {% if message.extra_tags == 'emedit' %}
+                <p class = "error">{{message}}</p>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                <div class="row">
+                    <div class="col-md-2">
+                        <span>Email</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input class="input-lg" name="emedit" type="text" value={{user.email}}>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="text-center">
+                            <input class="btn-primary" type="submit" value="Update">
+                        </div>
+                    </div>
+                </div>
+            
+            </form>
+        </div>
+
+    </body>
+</html>
